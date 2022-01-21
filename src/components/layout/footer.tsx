@@ -18,27 +18,28 @@ const useStyles = makeStyles((theme: Theme) => ({
 const Footer: FC = () => {
     const styles = useStyles();
     return (
-        <footer className={styles.footer}>
-            <Container maxWidth="md">
-                <Typography variant="body1" color="textSecondary">
-                    © {new Date().getFullYear()}, Built with
-                    {` `}
-                    <Link href="https://www.gatsbyjs.org" color="inherit">
-                        Gatsby
-                    </Link>
-                    ,{` `}
-                    <Link href="https://www.typescriptlang.org" color="inherit">
-                        Typescript
-                    </Link>{' '}
-                    and
-                    {` `}
-                    <Link href="https://material-ui.com/" color="inherit">
-                        @Material-ui
-                    </Link>
-                    ,
-                </Typography>
-            </Container>
-        </footer>
+        <></>
+        // <footer className={styles.footer}>
+        //     <Container maxWidth="md">
+        //         <Typography variant="body1" color="textSecondary">
+        //             © {new Date().getFullYear()}, Built with
+        //             {` `}
+        //             <Link href="https://www.gatsbyjs.org" color="inherit">
+        //                 Gatsby
+        //             </Link>
+        //             ,{` `}
+        //             <Link href="https://www.typescriptlang.org" color="inherit">
+        //                 Typescript
+        //             </Link>{' '}
+        //             and
+        //             {` `}
+        //             <Link href="https://material-ui.com/" color="inherit">
+        //                 @Material-ui
+        //             </Link>
+        //             ,
+        //         </Typography>
+        //     </Container>
+        // </footer>
     );
 };
 

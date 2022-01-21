@@ -34,20 +34,21 @@ const Header: FC<HeaderProps> = (props) => {
     };
 
     return (
-        <AppBar component="header" position="static" className={styles.root}>
-            <Toolbar>
-                <Typography variant="h6" className={styles.title}>
-                    <Link to="/" component={GatsbyLink} color="inherit" className={styles.link}>
-                        {props.siteTitle || ''}
-                    </Link>
-                </Typography>
-                <Tooltip title="switch theme">
-                    <Button onClick={onSwitch}>
-                        {showOn ? <BsToggleOn size="40" /> : <BsToggleOff size="40" />}
-                    </Button>
-                </Tooltip>
-            </Toolbar>
-        </AppBar>
+        <></>
+        // <AppBar component="header" position="static" className={styles.root}>
+        //     <Toolbar>
+        //         <Typography variant="h6" className={styles.title}>
+        //             <Link to="/" component={GatsbyLink} color="inherit" className={styles.link}>
+        //                 {props.siteTitle || ''}
+        //             </Link>
+        //         </Typography>
+        //         <Tooltip title="switch theme">
+        //             <Button onClick={onSwitch}>
+        //                 {showOn ? <BsToggleOn size="40" /> : <BsToggleOff size="40" />}
+        //             </Button>
+        //         </Tooltip>
+        //     </Toolbar>
+        // </AppBar>
     );
 };
 

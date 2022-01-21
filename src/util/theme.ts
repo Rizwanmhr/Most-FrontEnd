@@ -17,6 +17,37 @@ const makeTheme = (variant: ThemeOptions): Theme => {
                     }
                 }
             }
+        },
+        typography: {
+            // fontFamily: 'Inter',
+            fontSize: 14,
+            fontWeightBold: 500,
+            h1: {
+                fontSize: 22,
+                fontWeight: 500,
+                lineHeight: 1.5
+            },
+            body1: {
+                fontSize: 14,
+                fontWeight: 400
+                // color: "#475569"
+            },
+            body2: {
+                // color: "#97A6BA",
+                fontSize: 14,
+                fontWeight: 400
+            },
+            subtitle1: {
+                fontSize: '14px',
+                fontWeight: 500,
+                lineHeight: '21px'
+            },
+            button: {
+                borderRadius: 5,
+                fontSize: 12,
+                lineHeight: '18px',
+                fontWeight: 400
+            }
         }
     };
     const theme = createMuiTheme(deepMerge(common, variant));
@@ -27,16 +58,16 @@ const light: ThemeOptions = {
     palette: {
         type: 'light',
         primary: {
-            main: '#1582e8'
+            main: '#3337BC'
         },
         secondary: {
             main: '#7cd2f7'
         },
         error: {
-            main: '#f03e3e'
+            main: '#E52121'
         },
         warning: {
-            main: '#f0a04f'
+            main: '#EE8160'
         },
         info: {
             main: '#709ecc'
@@ -51,7 +82,7 @@ const light: ThemeOptions = {
             disabled: '#48494a'
         },
         background: {
-            default: '#f2f2f2',
+            default: '#ffffff',
             paper: '#dce3f2'
         }
     }
