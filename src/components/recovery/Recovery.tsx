@@ -1,54 +1,11 @@
 import React from 'react';
-import { Grid, Typography, Theme, Card } from '@material-ui/core';
-import { makeStyles, createStyles } from '@material-ui/core';
+import { Grid, Typography, Card } from '@material-ui/core';
 import EmailSvg from '../emailsvg/EmailSvg';
 import Most from '../most/Most';
 import PrivacyPolicy from '../policy/PrivacyPolicy';
 import { Link } from 'gatsby';
+import useStyles from './Recovery.styles';
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        mainDiv: {
-            width: '100%',
-            height: '100vh',
-            background: 'linear-gradient(0deg, #F9FAFB, #F9FAFB)',
-            paddingTop: theme.spacing(8)
-        },
-        center: {
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
-        },
-        card: {
-            // paddingLeft: '2rem',
-            backgroundColor: theme.palette.background.default,
-            boxShadow: '0px 20px 40px rgba(141, 147, 201, 0.08)',
-            paddingLeft: '2rem',
-            paddingRight: '2rem',
-            paddingBottom: '2rem'
-        },
-        emailsvg: {
-            marginTop: '2rem'
-        },
-        notify: {
-            marginTop: '1rem',
-            fontWeight: 600,
-            fontSize: '18px',
-            textAlign: 'center'
-        },
-        backbtn: {
-            textDecoration: 'none',
-            textTransform: 'capitalize'
-        },
-        login: {
-            color: theme.palette.primary.main,
-            fontWeight: 500,
-            marginTop: '1rem',
-            fontSize: '14px',
-            textAlign: 'center'
-        }
-    })
-);
 const Recovery: React.FC = () => {
     const classes = useStyles();
     return (

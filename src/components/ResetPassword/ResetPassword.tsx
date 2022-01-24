@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Grid, Typography, Theme, Card } from '@material-ui/core';
-import { makeStyles, createStyles } from '@material-ui/core';
+import { Grid, Typography, Card } from '@material-ui/core';
 import ButtonText from '../button/ButtonText';
 import TextForm from '../login/TextForm';
 import Most from '../most/Most';
@@ -8,59 +7,7 @@ import PrivacyPolicy from '../policy/PrivacyPolicy';
 import Recovery from '../recovery/Recovery';
 import Error from '../ErrorField/Error';
 import { Link } from 'gatsby';
-
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        main: {
-            width: '100%',
-            height: '100vh',
-            background: 'linear-gradient(0deg, #F9FAFB, #F9FAFB)',
-            paddingTop: theme.spacing(5)
-        },
-        center: {
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
-        },
-        error: {
-            marginTop: '2rem'
-        },
-        card: {
-            backgroundColor: theme.palette.background.default,
-            boxShadow: '0px 20px 40px rgba(141, 147, 201, 0.08)',
-            paddingLeft: '2rem',
-            paddingRight: '2rem',
-            paddingBottom: '2rem'
-        },
-        reset: {
-            fontWeight: 600,
-            fontSize: '18px',
-            marginTop: '2rem'
-        },
-        content: {
-            marginTop: '1.5rem',
-            fontWeight: 400,
-            fontSize: '14px'
-        },
-        label: {
-            body1: theme.typography.fontSize
-        },
-        field: {
-            marginTop: '1.5rem'
-        },
-        backbtn: {
-            textDecoration: 'none',
-            textTransform: 'capitalize'
-        },
-        login: {
-            color: theme.palette.primary.main,
-            fontWeight: 500,
-            marginTop: '1rem',
-            fontSize: '14px',
-            textAlign: 'center'
-        }
-    })
-);
+import useStyles from './ResetPassword.styles';
 
 const ResetPassword: React.FC = () => {
     const classes = useStyles();
@@ -80,7 +27,7 @@ const ResetPassword: React.FC = () => {
             setErrorMessage({
                 ...Errormessage,
                 type: 'error',
-                message: 'Invalid Login Credentials!',
+                message: 'Invalid email',
                 isMessage: true
             });
         } else {
@@ -127,20 +74,28 @@ const ResetPassword: React.FC = () => {
                                     <Grid container>
                                         <Grid item xs={12} sm={12} md={12} lg={12}>
                                             <label className={classes.label}>Email</label>
-                                            <TextForm
-                                                type="text"
-                                                placeholder="Email"
-                                                size="small"
-                                                variant="outlined"
-                                                name="email"
-                                                value={user}
-                                                onChange={handelInput}
-                                            />
+                                            <div className={classes.input}>
+                                                <TextForm
+                                                    type="text"
+                                                    placeholder="Email"
+                                                    size="small"
+                                                    variant="outlined"
+                                                    name="email"
+                                                    value={user}
+                                                    onChange={handelInput}
+                                                    style={{ background: '#F9FAFB' }}
+                                                />
+                                            </div>
                                         </Grid>
                                     </Grid>
                                     <ButtonText
                                         variant="contained"
-                                        style={{ marginTop: '2rem', height: '2.6rem' }}
+                                        text="Send Email"
+                                        style={{
+                                            marginTop: '2rem',
+                                            height: '2.6rem',
+                                            borderRadius: '7px'
+                                        }}
                                         onClick={submit}
                                     />
                                 </div>

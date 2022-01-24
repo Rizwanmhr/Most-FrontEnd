@@ -1,63 +1,14 @@
 import React, { useState } from 'react';
-import { Typography, Grid, Theme, Box, Button, Checkbox, Card } from '@material-ui/core';
-import { makeStyles, createStyles } from '@material-ui/core';
+import { Typography, Grid, Box, Button, Checkbox, Card } from '@material-ui/core';
 import ButtonText from '../button/ButtonText';
 import Error from '../ErrorField/Error';
 import TextForm from './TextForm';
 import Most from '../most/Most';
 import PrivacyPolicy from '../policy/PrivacyPolicy';
-
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        main: {
-            width: '100%',
-            height: '100vh',
-            background: 'linear-gradient(0deg, #F9FAFB, #F9FAFB)',
-            paddingTop: theme.spacing(5)
-        },
-        card: {
-            backgroundColor: theme.palette.background.default,
-            boxShadow: '0px 20px 40px rgba(141, 147, 201, 0.08)',
-            paddingLeft: '2rem',
-            paddingRight: '2rem',
-            paddingBottom: '2rem'
-        },
-        text: {
-            color: theme.palette.primary.main,
-            fontWeight: 500,
-            marginTop: '0.5rem',
-            fontSize: '14px'
-        },
-        signin: {
-            marginTop: '2rem',
-            fontWeight: 600,
-            fontSize: '18px'
-        },
-        label: {
-            body1: theme.typography.fontSize
-        },
-        AllFields: {
-            marginTop: '1rem'
-        },
-        heading: {
-            textAlign: 'center',
-            fontWeight: 400,
-            fontSize: '14px'
-        },
-        buttonSignup: {
-            width: '100%',
-            color: theme.palette.warning.main,
-            border: '1px solid #EE8160',
-            fontWeight: 500,
-            fontSize: '15px',
-            textTransform: 'capitalize'
-        },
-        checkbox: {
-            display: 'flex',
-            alignItems: 'center'
-        }
-    })
-);
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
+import { Link } from 'gatsby';
+import useStyles from './Login.styles';
 
 const Login: React.FC = () => {
     const classes = useStyles();
@@ -71,6 +22,7 @@ const Login: React.FC = () => {
         message: '',
         isMessage: false
     });
+    const [open, setOpen] = useState(false);
 
     let name, value;
     const handleInput = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -97,6 +49,8 @@ const Login: React.FC = () => {
             });
         }
     };
+    const handleToggle = () => setOpen(!open);
+
     return (
         <>
             <Grid className={classes.main}>
@@ -118,15 +72,18 @@ const Login: React.FC = () => {
                                     <Grid container>
                                         <Grid item xs={12} sm={12} md={12} lg={12}>
                                             <label className={classes.label}>Email</label>
-                                            <TextForm
-                                                type="text"
-                                                variant="outlined"
-                                                placeholder="Email"
-                                                name="email"
-                                                value={user.email}
-                                                size="small"
-                                                onChange={(e) => handleInput(e)}
-                                            />
+                                            <div className={classes.input}>
+                                                <TextForm
+                                                    type="text"
+                                                    variant="outlined"
+                                                    placeholder="Email"
+                                                    name="email"
+                                                    value={user.email}
+                                                    size="small"
+                                                    onChange={(e) => handleInput(e)}
+                                                    style={{ background: '#F9FAFB' }}
+                                                />
+                                            </div>
                                         </Grid>
                                     </Grid>
                                 </div>
@@ -134,15 +91,28 @@ const Login: React.FC = () => {
                                     <Grid container>
                                         <Grid item xs={12} sm={12} md={12} lg={12}>
                                             <label className={classes.label}>Password</label>
-                                            <TextForm
-                                                type="text"
-                                                placeholder="Password"
-                                                variant="outlined"
-                                                size="small"
-                                                name="password"
-                                                value={user.password}
-                                                onChange={(e) => handleInput(e)}
-                                            />
+                                            <div className={classes.icon}>
+                                                <TextForm
+                                                    type={open === false ? 'password' : 'text'}
+                                                    placeholder="Password"
+                                                    variant="outlined"
+                                                    size="small"
+                                                    name="password"
+                                                    value={user.password}
+                                                    onChange={(e) => handleInput(e)}
+                                                    style={{
+                                                        background: '#F9FAFB',
+                                                        position: 'relative'
+                                                    }}
+                                                />
+                                                <div className={classes.visible}>
+                                                    {open === false ? (
+                                                        <VisibilityOffIcon onClick={handleToggle} />
+                                                    ) : (
+                                                        <VisibilityIcon onClick={handleToggle} />
+                                                    )}
+                                                </div>
+                                            </div>
                                         </Grid>
                                     </Grid>
                                 </div>
@@ -159,21 +129,30 @@ const Login: React.FC = () => {
                                                     setUser({ ...user, checkbox: e.target.value })
                                                 }
                                             />
-                                            <Typography>Stay Signed In</Typography>
+                                            <Typography className={classes.signdin}>
+                                                Stay Signed In
+                                            </Typography>
                                         </div>
                                     </Grid>
                                     <Grid item lg={4}>
-                                        <Typography className={classes.text}>
-                                            Forgot Password?
-                                        </Typography>
+                                        <Link
+                                            to="/confirmpassword"
+                                            style={{ textDecoration: 'none' }}
+                                        >
+                                            <Typography className={classes.text}>
+                                                Forgot Password?
+                                            </Typography>
+                                        </Link>
                                     </Grid>
                                 </Grid>
                             </div>
                             <div className={classes.AllFields}>
                                 <ButtonText
                                     variant="contained"
+                                    text="Sign in"
                                     onClick={(e) => submit(e)}
                                     onChange={(e) => handleInput(e)}
+                                    style={{ height: '2.6rem', borderRadius: '7px' }}
                                 />
                             </div>
                             <Grid container justifyContent="center">
@@ -193,7 +172,7 @@ const Login: React.FC = () => {
                 </Grid>
 
                 <Grid container justifyContent="center">
-                    <Grid>
+                    <Grid item lg={10}>
                         <PrivacyPolicy />
                     </Grid>
                 </Grid>
@@ -201,5 +180,4 @@ const Login: React.FC = () => {
         </>
     );
 };
-
 export default Login;

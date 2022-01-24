@@ -38,6 +38,7 @@ const ButtonText: React.FC<IProps> = ({
     onChange,
     icon,
     size,
+    text,
     variant,
     style,
     fullWidth,
@@ -55,11 +56,12 @@ const ButtonText: React.FC<IProps> = ({
                 disabled={disabled || loading}
                 size={size}
                 style={style}
+                text={text}
                 fullWidth={fullWidth}
                 type={submit}
                 startIcon={icon}
             >
-                Sign in
+                {text}
             </Button>
         </>
     );

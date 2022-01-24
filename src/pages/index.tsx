@@ -19,7 +19,7 @@ const IndexPage: FC = () => {
         <>
             <Seo title="Home" />
             {/* <Lazy type="grow" delay={500} timeout={1000} mountOnEnter unmountOnExit> */}
-            {/* <Login /> */}
+            <Login />
             {/* <ResetPassword />  */}
             {/* </Lazy> */}
         </>
